@@ -1,0 +1,67 @@
+<ul>
+  <li>
+    <label for="packageName">Package Name</label>
+    <br>
+    <input id="packageName" type="text" [(ngModel)]="packageName">
+  </li>
+  <li>
+    <label for="entityName">Entity Name</label>
+    <br>
+    <input id="entityName" type="text" [(ngModel)]="entityName">
+  </li>
+  <li>
+    <label for="detection">Detection method</label>
+    <br>
+    <select name="detection" id="detection" [(ngModel)]="detectMethod">
+      <option value="manual">Manual Input</option>
+      <option value="auto">Auto detect</option>
+    </select>
+  </li>
+  <li *ngIf="detectMethod==='manual'">
+    <label for="numberOfField">Number Of Field</label>
+    <input id="numberOfField" type="number" min="0" [(ngModel)]="numberOfField" (change)="updateFieds()">
+    <ul>
+      <li *ngFor="let field of fields">
+        <input id="dataType" type="text" [(ngModel)]="field.dataType">
+        <input id="name" type="text" [(ngModel)]="field.name">
+      </li>
+    </ul>
+  </li>
+  <li *ngIf="detectMethod==='auto'">
+    <label for="InputText">Input Text here</label>
+    <br>
+    <textarea name="InputText" id="InputText" cols="60" rows="10" [(ngModel)]="inputText"></textarea>
+    <br>
+    <button (click)="extractField()">Extract Field</button>
+  </li>
+  <li>
+    <button (click)="generatedAll()">Generate All</button>
+  </li>
+  <li>
+    <label for="result">Generated</label>
+    <br>
+    <select name="result" id="result" [(ngModel)]="generatedFile">
+      <option value="entity">Entity File</option>
+      <option value="dao">Dao File</option>
+      <option value="service">Service File</option>
+      <option value="controller">Controller</option>
+      <option value="openFiegnInterface">Open feign interface</option>
+    </select>
+  </li>
+
+  <li *ngIf="generatedFile === 'entity'">
+    <textarea class="mb" name="InputText" id="InputText" [cols]="col" [rows]="row" [(ngModel)]="entityFile"></textarea>
+  </li>
+
+  <li *ngIf="generatedFile === 'dao'">
+    <textarea class="mb" name="InputText" id="InputText" [cols]="col" [rows]="row" [(ngModel)]="daoFile"></textarea>
+  </li>
+
+  <li *ngIf="generatedFile === 'service'">
+    <textarea class="mb" name="InputText" id="InputText" [cols]="col" [rows]="row" [(ngModel)]="serviceFile"></textarea>
+  </li>
+
+  <li *ngIf="generatedFile === 'controller'">
+    <textarea class="mb" name="InputText" id="InputText" [cols]="col" [rows]="row" [(ngModel)]="controllerFile"></textarea>
+  </li>
+</ul>
