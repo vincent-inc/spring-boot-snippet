@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-snippet-deployment
+  labels:
+    app: spring-boot-snippet
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-boot-snippet
+  template:
+    metadata:
+      labels:
+        app: spring-boot-snippet
+    spec:
+      containers:
+      - name: spring-boot-snippet
+        image: vincentbuiwork/spring-boot-snippet:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
