@@ -8,7 +8,7 @@ spec:
   type:  LoadBalancer
   ports:
   - name:  http
-    port:  8081 #local out port
+    port:  8080 #local out port
     protocol: TCP
     targetPort:  80 # container port
   selector:
