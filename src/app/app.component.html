@@ -1,9 +1,6 @@
-<select [(ngModel)]="select" #option="ngModel">
-  <option value="spring-boot" selected>Spring boot</option>
-  <option value="openFiegn">Openfiegn</option>
-  <option value="angular">Angular</option>
-</select>
+<button [routerLink]="['/spring_boot']" routerLinkActive="router-link-active" >Spring Boot</button>
+<button [routerLink]="['/spring_boot_v02']" routerLinkActive="router-link-active" >Spring Boot V02</button>
+<button [routerLink]="['/openfiegn']" routerLinkActive="router-link-active" >openfiegn</button>
+<button [routerLink]="['/angular']" routerLinkActive="router-link-active" >Angular</button>
 
-<app-spring-boot *ngIf="select === 'spring-boot'"></app-spring-boot>
-<app-open-fiegn *ngIf="select === 'openFiegn'"></app-open-fiegn>
-<app-angular *ngIf="select === 'angular'"></app-angular>
+<router-outlet></router-outlet>

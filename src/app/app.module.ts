@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AngularMaterialModule } from './shared/modules/AngularMaterial.module';
 import { SpringBootComponent } from './spring-boot/spring-boot.component';
 import { AngularComponent } from './angular/angular.component';
 import { OpenFiegnComponent } from './open-fiegn/open-fiegn.component';
+import { SpringBootV02Component } from './spring-boot-v02/spring-boot-v02.component';
+import { NgEssentialModule } from './shared/module/ng-essential.module';
+import { NgMaterialModule } from './shared/module/ng-material.module';
+import { NgComponentModule } from './shared/module/ng-component.module';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
       SpringBootComponent,
       AngularComponent,
-      OpenFiegnComponent
+      OpenFiegnComponent,
+      SpringBootV02Component
    ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    AngularMaterialModule
+    NgEssentialModule,
+    NgMaterialModule,
+    NgComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
