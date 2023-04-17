@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-snippet-prod
+  namespace: spring-boot-snippet-prod
+  labels:
+    app: spring-boot-snippet-prod
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-snippet-prod
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: spring-boot-snippet-prod
+    spec:
+      containers:
+      - name: spring-boot-snippet-prod
+        image: vincentbuiwork/spring-boot-snippet:prod
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 500M
+          limits:
+            cpu: 2
+            memory: 2Gi
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: index.html
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
