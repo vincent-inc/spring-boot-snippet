@@ -1,3 +1,33 @@
-<p>
-  spring-boot-v02 works!
-</p>
+<ul>
+  <li>
+    <label for="packageName">Package Name</label>
+    <br>
+    <input id="packageName" type="text" [(ngModel)]="packageName">
+  </li>
+
+  <li>
+    <label for="entityName">Entity Name</label>
+    <br>
+    <input id="entityName" type="text" [(ngModel)]="entityName">
+  </li>
+
+  <li>
+    <label for="numberOfField">Number Of Field</label>
+    <input id="numberOfField" type="number" min="0" [(ngModel)]="numberOfField" (change)="updateFieds()">
+    <ul>
+      <li *ngFor="let field of fields">
+        <input id="dataType" type="text" [(ngModel)]="field.dataType">
+        <input id="name" type="text" [(ngModel)]="field.name">
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <input type="checkbox" id="Redis">
+    <label for="Redis">Redis</label><br>
+    <input type="checkbox" id="ReplacementUtil">
+    <label for="ReplacementUtil">ReplacementUtil</label><br>
+    <input type="checkbox" id="Lombok">
+    <label for="Lombok">Lombok</label><br>
+  </li>
+</ul>

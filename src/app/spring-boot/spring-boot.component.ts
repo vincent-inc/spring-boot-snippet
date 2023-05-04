@@ -95,7 +95,7 @@ export class SpringBootComponent implements OnInit {
     let idFieldDataType = this.fields[0].dataType;
 
     this.entityFile = this.entityFile.replaceAll("{3}", `${idFieldDataType} ${idFieldName}`);
-
+    
     let method = "";
     if(this.fields.length > 1)
     {

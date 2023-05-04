@@ -6,9 +6,9 @@ metadata:
     app: spring-boot-snippet-dev
 spec:
   type: LoadBalancer
-  loadBalancerIP: 192.168.1.103
+  loadBalancerIP: 10.24.24.103
   externalIPs:
-  - 192.168.1.103
+  - 10.24.24.103
   ports:
   - name: http
     port: 83 #local out port
